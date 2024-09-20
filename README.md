@@ -61,3 +61,6 @@
 # 6. Final Considerations
 - **FC01**: The application will be developed in multiple versions, each exploring a different type of software architecture.
 - **FC02**: During development, best practices of the chosen software architecture will be followed for each version of the calculator.
+
+
+
