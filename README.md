@@ -1,7 +1,8 @@
 # 1. Introduction
 **Project Name**: Calculator  
-**Objective**: Develop a calculator application that allows basic mathematical operations. The project will be implemented using different software architectures for practical learning.  
-**Scope**: The project should cover basic arithmetic operations, operation history, and should be adaptable to different architectures (MVC, Microservices, Clean Architecture, etc.).
+**Objective**: Develop a Calculator application that allows basic mathematical operations. The goal is to implement a Calculator using different software architectures for practical learning.
+
+**Scope**: The project should cover basic arithmetic operations using MVC architecture.
 
 # 2. Functional Requirements
 
@@ -21,11 +22,7 @@
 - **FR09**: The calculator should prevent division by zero, displaying an appropriate error message.
 - **FR10**: The calculator should validate user input to accept only numerical values.
 
-## 2.4. Operation History
-- **FR11**: The calculator should store a history of the last 10 operations performed, displaying both operations and results.
-- **FR12**: The history should be reset when the calculator is restarted.
-
-## 2.5. Extra Features (for more advanced architecture)
+## 2.4. Extra Features (for more advanced architecture)
 - **FR13**: The calculator should allow the execution of more complex operations, such as percentage calculation and square root.
 - **FR14**: The calculator should have a configuration module to switch between operation modes (scientific or basic).
 
@@ -61,6 +58,5 @@
 # 6. Final Considerations
 - **FC01**: The application will be developed in multiple versions, each exploring a different type of software architecture.
 - **FC02**: During development, best practices of the chosen software architecture will be followed for each version of the calculator.
-
 
 
