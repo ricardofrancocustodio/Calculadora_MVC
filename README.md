@@ -55,7 +55,13 @@
 - **C01**: The project should be initially implemented in a programming language supported by IntelliJ, such as Java or Kotlin.
 - **C02**: The application should be developed considering the possibility of being portable to different environments and frameworks.
 
-# 6. Final Considerations
+# 6. Automated Tests
+- **AT01**: The application should have automated tests for backend and it should report: smoke, regression (per functionality and whole project), security, performance and integration tests on the backend.
+- **AT02**: The reports should attend Test Team on Management and Technical actions; Attend the DEV Team on identify the issue on technical requirements; Attend the non-technical, but related stakeholders on communicating progress and quality of the product.
+- - QA Stack: Java, Spring Boot, Dependencies (JUnit5, Surefire, Reflections, Mockito, MySQL Connector (JDBC))
+- - Folder structure on
+
+# 7. Final Considerations
 - **FC01**: The application will be developed in multiple versions, each exploring a different type of software architecture.
 - **FC02**: During development, best practices of the chosen software architecture will be followed for each version of the calculator.
 

@@ -14,7 +14,7 @@ public class SubtracaoService {
     }
 
     public Integer subtracao(Integer number_1, Integer number_2){
-        return number_1 / number_2;
+        return number_1 - number_2;
     }
 
     private Integer getNumber_1(){
