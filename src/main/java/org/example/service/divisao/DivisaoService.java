@@ -1,37 +1,30 @@
 package org.example.service.divisao;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.example.config.security.RandomNumber;
+import org.example.model.operations.OperationModel;
+import org.example.repository.divisao.DivisionRepository;
+import java.sql.SQLException;
 
 public class DivisaoService {
 
-    private Integer number_1;
-    private Integer number_2;
-
-
-    public DivisaoService(Integer number_1, Integer number_2){
-        this.number_1 =  number_1;
-        this.number_2 =  number_2;
+    private final int randomId = RandomNumber.getNumber();
+    private final DivisionRepository divisionRepository;
+    public DivisaoService(DivisionRepository divisionRepository){
+        this.divisionRepository =  divisionRepository;
     }
 
-    public Integer divisao(Integer number_1, Integer number_2){
-        return number_1 / number_2;
-    }
+    public Integer divisao(Integer numberOne, Integer numberTwo){
 
-    private Integer getNumber_1(){
-        return number_1;
-    }
+        int result = numberOne / numberTwo;
 
-    private Integer getNumber_2(){
-        return number_2;
-    }
+        OperationModel operation = new OperationModel(randomId, "divisao", numberOne, numberTwo, result);
+        try {
+            divisionRepository.save(operation);  // Salva a operação no banco
+        } catch (SQLException e) {
+            e.printStackTrace();  // Lida com possíveis erros de SQL
+        }
 
-    public List<Integer> addNumbersToList(){
-        List<Integer> listNumbers =  new ArrayList<>();
-        listNumbers.add(getNumber_1());
-        listNumbers.add(getNumber_2());
-
-        return listNumbers;
+        return result;
     }
 
 }

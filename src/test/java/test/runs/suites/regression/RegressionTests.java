@@ -3,6 +3,7 @@ package test.runs.suites.regression;
 import org.junit.platform.suite.api.IncludeTags;
 import org.junit.platform.suite.api.SelectClasses;
 import org.junit.platform.suite.api.Suite;
+import org.junit.platform.suite.api.SuiteDisplayName;
 import test.example.controller.CalculoControllerCallTest;
 import test.example.controller.operations.DivisionControllerCallTest;
 import test.example.controller.operations.MultiplyControllerCallTest;
@@ -27,5 +28,6 @@ import test.example.service.SubtractServiceTest;
 
 })
 @IncludeTags("regression")
-public class regression {
+@SuiteDisplayName("Regression Tests For Calculator")
+public class RegressionTests {
 }

@@ -59,7 +59,8 @@
 - **AT01**: The application should have automated tests for backend and it should report: smoke, regression (per functionality and whole project), security, performance and integration tests on the backend.
 - **AT02**: The reports should attend Test Team on Management and Technical actions; Attend the DEV Team on identify the issue on technical requirements; Attend the non-technical, but related stakeholders on communicating progress and quality of the product.
 - - QA Stack: Java, Spring Boot, Dependencies (JUnit5, Surefire, Reflections, Mockito, MySQL Connector (JDBC))
-- - Folder structure on
+- - Folder structure on:
+- - Note: Controller calls Services | Services calls Repository | 
 
 # 7. Final Considerations
 - **FC01**: The application will be developed in multiple versions, each exploring a different type of software architecture.

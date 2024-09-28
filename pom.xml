@@ -12,6 +12,8 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <sonar.host.url>http://localhost:9000</sonar.host.url>
+        <sonar.token>sqa_1e3319dc49a75128fee8930aea9ba6acdcd2d80c</sonar.token>
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
@@ -35,6 +37,14 @@
             <version>1.11.0</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-params -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>5.11.1</version>
+            <scope>test</scope>
+        </dependency>
+
 
         <!-- Mockito para mocking -->
         <dependency>

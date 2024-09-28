@@ -15,9 +15,8 @@ public class DivisaoController implements OperacaoMatematica {
     }
 
     @Override
-    public Integer calcular(Integer number_1, Integer number_2){
-        validacaoService.checkIfIntegers(number_1, number_2);
-        validacaoService.divisionByZero(number_2);
-        return divisaoService.divisao(number_1, number_2);
+    public Integer calcular(Integer numberOne, Integer numberTwo){
+        validacaoService.checkIfIntegers(numberOne, numberTwo);
+        return divisaoService.divisao(numberOne, numberTwo);
     }
 }

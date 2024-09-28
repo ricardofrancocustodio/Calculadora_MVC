@@ -1,4 +1,4 @@
-package test.runs.suites.regression.smoke;
+package test.runs.suites.smoke;
 
 
 import org.junit.platform.suite.api.IncludeTags;

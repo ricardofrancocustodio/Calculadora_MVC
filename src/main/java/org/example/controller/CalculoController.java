@@ -11,7 +11,7 @@ public class CalculoController {
         this.operacoes = operacoes;
     }
 
-    public Integer calcular(String operacao, Integer number_1, Integer number_2){
+    public Integer calcular(String operacao, int numberOne, int numberTwo){
         OperacaoMatematica operacaoMatematica = operacoes.get(operacao);
 
         if (!operacao.equals("soma") && !operacao.equals("subtracao") && !operacao.equals("multiplicacao") && !operacao.equals("divisao")) {
@@ -22,7 +22,7 @@ public class CalculoController {
             throw new IllegalArgumentException("Numbers cannor be null");
         }
 
-        return operacaoMatematica.calcular(number_1, number_2);
+        return operacaoMatematica.calcular(numberOne, numberTwo);
     }
 
 }

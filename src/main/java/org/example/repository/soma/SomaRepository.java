@@ -1,6 +1,5 @@
 package org.example.repository.soma;
 
-import org.example.config.ConnectionFactory;
 import org.example.model.operations.OperationModel;
 import org.example.repository.CalculadoraRepository;
 
@@ -12,7 +11,7 @@ public class SomaRepository implements CalculadoraRepository {
 
     Connection connection;
 
-    public SomaRepository(Connection connection) throws SQLException {
+    public SomaRepository(Connection connection) {
         this.connection = connection;  // Conexão recebida do serviço de banco de dados
     }
 

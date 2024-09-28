@@ -15,9 +15,9 @@ public class SomaController implements OperacaoMatematica {
     }
 
     @Override
-    public Integer calcular(Integer number_1, Integer number_2){
-        validacaoSomaService.checkIfIntegers(number_1, number_2);
-        return somaService.soma(number_1, number_2);
+    public Integer calcular(Integer numberOne, Integer numberTwo){
+        validacaoSomaService.checkIfIntegers(numberOne, numberTwo);
+        return somaService.soma(numberOne, numberTwo);
     }
 
 
