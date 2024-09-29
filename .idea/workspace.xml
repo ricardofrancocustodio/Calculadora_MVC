@@ -4,36 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f03d903-5672-4512-86e4-801a3d81e036" name="Changes" comment="21/09/2024">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/config/security/RandomNumber.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/sonar.properties" afterDir="false" />
+    <list default="true" id="6f03d903-5672-4512-86e4-801a3d81e036" name="Changes" comment="28/09/2024">
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/folder_structure.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sonar-project.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/config/ConnectionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/config/ConnectionFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/config/Driver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/CalculoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/CalculoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/OperacaoMatematica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/OperacaoMatematica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/divisao/DivisaoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/divisao/DivisaoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/multiplicacao/MultiplicacaoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/multiplicacao/MultiplicacaoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/soma/SomaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/soma/SomaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/subtracao/SubtracaoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/subtracao/SubtracaoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/divisao/DivisionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/divisao/DivisionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/multiplicacao/MultiplicacaoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/multiplicacao/MultiplicacaoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/soma/SomaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/soma/SomaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/subtracao/SubtracaoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/subtracao/SubtracaoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/ValidacaoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/ValidacaoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/divisao/DivisaoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/divisao/DivisaoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/multiplicacao/MultiplicacaoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/multiplicacao/MultiplicacaoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/soma/SomaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/soma/SomaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/subtracao/SubtracaoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/subtracao/SubtracaoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/view/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/view/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/test/example/service/DivisionServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/example/service/DivisionServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/test/example/service/MultiplyServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/example/service/MultiplyServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/test/example/service/SomaServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/example/service/SomaServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/test/example/service/SubtractServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/example/service/SubtractServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/test/runs/suites/regression/regression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/runs/suites/regression/RegressionTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/test/runs/suites/regression/smoke/SmokeTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/runs/suites/smoke/SmokeTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +24,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="master" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -68,7 +48,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Projects/backend-dev",
+    "last_opened_file_path": "C:/Projects/ritosumariors",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -200,7 +180,14 @@
       <option name="project" value="LOCAL" />
       <updated>1726958104041</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="28/09/2024">
+      <created>1727547256503</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1727547256503</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -219,6 +206,7 @@
     <MESSAGE value="initial" />
     <MESSAGE value="20/09/2024" />
     <MESSAGE value="21/09/2024" />
-    <option name="LAST_COMMIT_MESSAGE" value="21/09/2024" />
+    <MESSAGE value="28/09/2024" />
+    <option name="LAST_COMMIT_MESSAGE" value="28/09/2024" />
   </component>
 </project>

@@ -1,0 +1,1453 @@
+Index: src/main/java/org/example/config/Driver.java
+===================================================================
+diff --git a/src/main/java/org/example/config/Driver.java b/src/main/java/org/example/config/Driver.java
+deleted file mode 100644
+--- a/src/main/java/org/example/config/Driver.java	(revision 72c1df61b491476595f5c5a2330744f04ef0d5c6)
++++ /dev/null	(revision 72c1df61b491476595f5c5a2330744f04ef0d5c6)
+@@ -1,25 +0,0 @@
+-package org.example.config;
+-
+-import org.example.config.ConnectionFactory;
+-
+-import java.sql.*;
+-
+-public class Driver {
+-    public static void main(String[] args) {
+-        try (Connection connection = ConnectionFactory.getConnection()) {
+-            // Preparar a query
+-            String sql = "SELECT * FROM usuarios";
+-            Statement statement = connection.createStatement();
+-            ResultSet resultSet = statement.executeQuery(sql);
+-
+-            // Iterar sobre os resultados
+-            while (resultSet.next()) {
+-                String nome = resultSet.getString("nome");
+-                String email = resultSet.getString("email");
+-                System.out.println("Nome: " + nome + ", Email: " + email);
+-            }
+-        } catch (SQLException e) {
+-            e.printStackTrace();
+-        }
+-    }
+-}
+\ No newline at end of file
+Index: README.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># 1. Introduction\r\n**Project Name**: Calculator  \r\n**Objective**: Develop a Calculator application that allows basic mathematical operations. The goal is to implement a Calculator using different software architectures for practical learning.\r\n\r\n**Scope**: The project should cover basic arithmetic operations using MVC architecture.\r\n\r\n# 2. Functional Requirements\r\n\r\n## 2.1. Basic Mathematical Operations\r\n- **FR01**: The calculator should allow the user to perform addition operations.\r\n- **FR02**: The calculator should allow the user to perform subtraction operations.\r\n- **FR03**: The calculator should allow the user to perform multiplication operations.\r\n- **FR04**: The calculator should allow the user to perform division operations.\r\n- **FR05**: The calculator should allow the user to clear the current input (reset function).\r\n\r\n## 2.2. Input and Display\r\n- **FR06**: The calculator should accept numerical input from the user.\r\n- **FR07**: The calculator should display the result of the operation on the interface.\r\n- **FR08**: The interface should show a history of performed operations, allowing the user to review past calculations.\r\n\r\n## 2.3. Input Validation\r\n- **FR09**: The calculator should prevent division by zero, displaying an appropriate error message.\r\n- **FR10**: The calculator should validate user input to accept only numerical values.\r\n\r\n## 2.4. Extra Features (for more advanced architecture)\r\n- **FR13**: The calculator should allow the execution of more complex operations, such as percentage calculation and square root.\r\n- **FR14**: The calculator should have a configuration module to switch between operation modes (scientific or basic).\r\n\r\n# 3. Non-Functional Requirements\r\n\r\n## 3.1. Performance\r\n- **NFR01**: The calculator should return the result of any operation in less than 1 second.\r\n\r\n## 3.2. Usability\r\n- **NFR02**: The user interface should be intuitive and simple, allowing anyone to use it without the need for a manual.\r\n\r\n## 3.3. Scalability\r\n- **NFR03**: The application should be developed in a modular way to allow future extensions, such as adding new operations or integrating with other systems.\r\n\r\n## 3.4. Maintainability\r\n- **NFR04**: The code should be well documented, following best programming practices, facilitating maintenance and the addition of new features.\r\n\r\n## 3.5. Portability\r\n- **NFR05**: The application should be developed to run on different environments (desktop, web) without major code changes.\r\n\r\n## 3.6. Security\r\n- **NFR06**: The application should validate all user inputs to prevent possible errors and ensure the correct functioning of the calculator.\r\n\r\n# 4. Integration Requirements\r\n- **IR01**: For versions of the calculator implemented using architectures like Microservices, calculation services (e.g., addition, subtraction) should communicate through REST APIs.\r\n- **IR02**: For event-driven architecture, the calculator should use an event system to perform and log operations.\r\n- **IR03**: For layered and MVC architectures, the components (Model, View, Controller) must be decoupled, allowing replacement and alteration of components without impacting other layers.\r\n\r\n# 5. Constraints\r\n- **C01**: The project should be initially implemented in a programming language supported by IntelliJ, such as Java or Kotlin.\r\n- **C02**: The application should be developed considering the possibility of being portable to different environments and frameworks.\r\n\r\n# 6. Automated Tests\r\n- **AT01**: The application should have automated tests for backend and it should report: smoke, regression (per functionality and whole project), security, performance and integration tests on the backend.\r\n- **AT02**: The reports should attend Test Team on Management and Technical actions; Attend the DEV Team on identify the issue on technical requirements; Attend the non-technical, but related stakeholders on communicating progress and quality of the product.\r\n- - QA Stack: Java, Spring Boot, Dependencies (JUnit5, Surefire, Reflections, Mockito, MySQL Connector (JDBC))\r\n- - Folder structure on\r\n\r\n# 7. Final Considerations\r\n- **FC01**: The application will be developed in multiple versions, each exploring a different type of software architecture.\r\n- **FC02**: During development, best practices of the chosen software architecture will be followed for each version of the calculator.\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/README.md b/README.md
+--- a/README.md	(revision 72c1df61b491476595f5c5a2330744f04ef0d5c6)
++++ b/README.md	(date 1726963687319)
+@@ -59,7 +59,8 @@
+ - **AT01**: The application should have automated tests for backend and it should report: smoke, regression (per functionality and whole project), security, performance and integration tests on the backend.
+ - **AT02**: The reports should attend Test Team on Management and Technical actions; Attend the DEV Team on identify the issue on technical requirements; Attend the non-technical, but related stakeholders on communicating progress and quality of the product.
+ - - QA Stack: Java, Spring Boot, Dependencies (JUnit5, Surefire, Reflections, Mockito, MySQL Connector (JDBC))
+-- - Folder structure on
++- - Folder structure on:
++- - Note: Controller calls Services | Services calls Repository | 
+ 
+ # 7. Final Considerations
+ - **FC01**: The application will be developed in multiple versions, each exploring a different type of software architecture.
+Index: src/test/java/test/runs/suites/regression/smoke/SmokeTests.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/test/runs/suites/regression/smoke/SmokeTests.java b/src/test/java/test/runs/suites/smoke/SmokeTests.java
+rename from src/test/java/test/runs/suites/regression/smoke/SmokeTests.java
+rename to src/test/java/test/runs/suites/smoke/SmokeTests.java
+--- a/src/test/java/test/runs/suites/regression/smoke/SmokeTests.java	(revision 72c1df61b491476595f5c5a2330744f04ef0d5c6)
++++ b/src/test/java/test/runs/suites/smoke/SmokeTests.java	(date 1727322057377)
+@@ -1,4 +1,4 @@
+-package test.runs.suites.regression.smoke;
++package test.runs.suites.smoke;
+ 
+ 
+ import org.junit.platform.suite.api.IncludeTags;
+Index: src/test/java/test/runs/suites/regression/regression.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/test/runs/suites/regression/regression.java b/src/test/java/test/runs/suites/regression/RegressionTests.java
+rename from src/test/java/test/runs/suites/regression/regression.java
+rename to src/test/java/test/runs/suites/regression/RegressionTests.java
+--- a/src/test/java/test/runs/suites/regression/regression.java	(revision 72c1df61b491476595f5c5a2330744f04ef0d5c6)
++++ b/src/test/java/test/runs/suites/regression/RegressionTests.java	(date 1727536638562)
+@@ -3,6 +3,7 @@
+ import org.junit.platform.suite.api.IncludeTags;
+ import org.junit.platform.suite.api.SelectClasses;
+ import org.junit.platform.suite.api.Suite;
++import org.junit.platform.suite.api.SuiteDisplayName;
+ import test.example.controller.CalculoControllerCallTest;
+ import test.example.controller.operations.DivisionControllerCallTest;
+ import test.example.controller.operations.MultiplyControllerCallTest;
+@@ -27,5 +28,6 @@
+ 
+ })
+ @IncludeTags("regression")
+-public class regression {
++@SuiteDisplayName("Regression Tests For Calculator")
++public class RegressionTests {
+ }
+Index: src/main/java/org/example/repository/soma/SomaRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.repository.soma;\r\n\r\nimport org.example.config.ConnectionFactory;\r\nimport org.example.model.operations.OperationModel;\r\nimport org.example.repository.CalculadoraRepository;\r\n\r\nimport java.sql.Connection;\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.SQLException;\r\n\r\npublic class SomaRepository implements CalculadoraRepository {\r\n\r\n    Connection connection;\r\n\r\n    public SomaRepository(Connection connection) throws SQLException {\r\n        this.connection = connection;  // Conexão recebida do serviço de banco de dados\r\n    }\r\n\r\n    @Override\r\n    public void save(OperationModel operationModel) throws SQLException {\r\n        String query = \"INSERT INTO operacoes (id_operacao, operationTypeId, number1, number2, result) VALUES (?, ?, ?, ?, ?)\";\r\n        try (PreparedStatement stmt = connection.prepareStatement(query)) {\r\n            stmt.setInt(1, operationModel.getIdOperacao());\r\n            stmt.setString(2, operationModel.getOperationType());\r\n            stmt.setInt(3, operationModel.getNumber1());\r\n            stmt.setInt(4, operationModel.getNumber2());\r\n            stmt.setInt(5, operationModel.getResult());\r\n\r\n            stmt.executeUpdate();\r\n        }\r\n\r\n    }\r\n\r\n\r\n    @Override\r\n    public void update(OperationModel operationModel) {\r\n\r\n    }\r\n\r\n    @Override\r\n    public void delete() {\r\n\r\n    }\r\n\r\n    @Override\r\n    public void find() {\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/repository/soma/SomaRepository.java b/src/main/java/org/example/repository/soma/SomaRepository.java
+--- a/src/main/java/org/example/repository/soma/SomaRepository.java	(revision 72c1df61b491476595f5c5a2330744f04ef0d5c6)
++++ b/src/main/java/org/example/repository/soma/SomaRepository.java	(date 1727531633837)
+@@ -1,6 +1,5 @@
+ package org.example.repository.soma;
+ 
+-import org.example.config.ConnectionFactory;
+ import org.example.model.operations.OperationModel;
+ import org.example.repository.CalculadoraRepository;
+ 
+@@ -12,7 +11,7 @@
+ 
+     Connection connection;
+ 
+-    public SomaRepository(Connection connection) throws SQLException {
++    public SomaRepository(Connection connection) {
+         this.connection = connection;  // Conexão recebida do serviço de banco de dados
+     }
+ 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"6f03d903-5672-4512-86e4-801a3d81e036\" name=\"Changes\" comment=\"20/09/2024\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/example/config/ConnectionFactory.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/example/config/Driver.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/example/model/operations/OperationModel.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/example/repository/CalculadoraRepository.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/example/repository/divisao/DivisionRepository.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/example/repository/multiplicacao/MultiplicacaoRepository.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/example/repository/soma/SomaRepository.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/example/repository/subtracao/SubtracaoRepository.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/example/view/Main.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/test/example/controller/CalculoControllerCallTest.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/test/example/controller/operations/DivisionControllerCallTest.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/test/example/controller/operations/MultiplyControllerCallTest.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/test/example/controller/operations/SomaControllerCallTest.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/test/example/controller/operations/SubtractControllerCallTest.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/test/example/service/DivisionServiceTest.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/test/example/service/MultiplyServiceTest.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/test/example/service/SomaServiceTest.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/test/example/service/SubtractServiceTest.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/test/runs/suites/regression/regression.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/test/runs/suites/regression/smoke/SmokeTests.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/README.md\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/README.md\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/pom.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/example/controller/CalculoController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/example/controller/CalculoController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/example/controller/soma/SomaController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/example/controller/soma/SomaController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/example/service/soma/SomaService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/example/service/soma/SomaService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/example/service/subtracao/SubtracaoService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/example/service/subtracao/SubtracaoService.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Interface\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2mIJWtOVyr2ryqlbb8Eh7ExMjnK\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Projects/backend-dev&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"test.example.service\" />\r\n      <recent name=\"test.example.controller\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.Main\">\r\n    <configuration name=\"Driver\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.example.config.Driver\" />\r\n      <module name=\"Calculadora_MVC\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.config.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.example.view.Main\" />\r\n      <module name=\"Calculadora_MVC\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.view.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"SmokeTests\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Calculadora_MVC\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"test.runs.suites.smoke.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"test.runs.suites.smoke\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"test.runs.suites.smoke.SmokeTests\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"SomaServiceTest.shouldSum\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Calculadora_MVC\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"test.example.service.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"test.example.service\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"test.example.service.SomaServiceTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"shouldSum\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"regression\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Calculadora_MVC\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"test.runs.suites.regression.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"test.runs.suites.regression\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"test.runs.suites.regression.regression\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Application.Driver\" />\r\n        <item itemvalue=\"JUnit.regression\" />\r\n        <item itemvalue=\"JUnit.SmokeTests\" />\r\n        <item itemvalue=\"JUnit.SomaServiceTest.shouldSum\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"6f03d903-5672-4512-86e4-801a3d81e036\" name=\"Changes\" comment=\"\" />\r\n      <created>1726758194840</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1726758194840</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"initial\">\r\n      <created>1726759547298</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1726759547298</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"20/09/2024\">\r\n      <created>1726845225865</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1726845225865</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"20/09/2024\">\r\n      <created>1726845609877</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1726845609877</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"4\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"initial\" />\r\n    <MESSAGE value=\"20/09/2024\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"20/09/2024\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 72c1df61b491476595f5c5a2330744f04ef0d5c6)
++++ b/.idea/workspace.xml	(date 1727536667862)
+@@ -4,34 +4,36 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="6f03d903-5672-4512-86e4-801a3d81e036" name="Changes" comment="20/09/2024">
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/config/ConnectionFactory.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/config/Driver.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/model/operations/OperationModel.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/CalculadoraRepository.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/divisao/DivisionRepository.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/multiplicacao/MultiplicacaoRepository.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/soma/SomaRepository.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/subtracao/SubtracaoRepository.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/view/Main.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/test/java/test/example/controller/CalculoControllerCallTest.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/test/java/test/example/controller/operations/DivisionControllerCallTest.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/test/java/test/example/controller/operations/MultiplyControllerCallTest.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/test/java/test/example/controller/operations/SomaControllerCallTest.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/test/java/test/example/controller/operations/SubtractControllerCallTest.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/test/java/test/example/service/DivisionServiceTest.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/test/java/test/example/service/MultiplyServiceTest.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/test/java/test/example/service/SomaServiceTest.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/test/java/test/example/service/SubtractServiceTest.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/test/java/test/runs/suites/regression/regression.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/test/java/test/runs/suites/regression/smoke/SmokeTests.java" afterDir="false" />
++    <list default="true" id="6f03d903-5672-4512-86e4-801a3d81e036" name="Changes" comment="21/09/2024">
++      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/config/security/RandomNumber.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/sonar.properties" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/config/ConnectionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/config/ConnectionFactory.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/config/Driver.java" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/CalculoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/CalculoController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/OperacaoMatematica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/OperacaoMatematica.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/divisao/DivisaoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/divisao/DivisaoController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/multiplicacao/MultiplicacaoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/multiplicacao/MultiplicacaoController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/soma/SomaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/soma/SomaController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/subtracao/SubtracaoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/subtracao/SubtracaoController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/divisao/DivisionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/divisao/DivisionRepository.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/multiplicacao/MultiplicacaoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/multiplicacao/MultiplicacaoRepository.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/soma/SomaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/soma/SomaRepository.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/subtracao/SubtracaoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/subtracao/SubtracaoRepository.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/ValidacaoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/ValidacaoService.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/divisao/DivisaoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/divisao/DivisaoService.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/multiplicacao/MultiplicacaoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/multiplicacao/MultiplicacaoService.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/soma/SomaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/soma/SomaService.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/subtracao/SubtracaoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/subtracao/SubtracaoService.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/view/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/view/Main.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/java/test/example/service/DivisionServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/example/service/DivisionServiceTest.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/java/test/example/service/MultiplyServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/example/service/MultiplyServiceTest.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/java/test/example/service/SomaServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/example/service/SomaServiceTest.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/java/test/example/service/SubtractServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/example/service/SubtractServiceTest.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/java/test/runs/suites/regression/regression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/runs/suites/regression/RegressionTests.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/java/test/runs/suites/regression/smoke/SmokeTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/runs/suites/smoke/SmokeTests.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -66,6 +68,9 @@
+     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+     &quot;last_opened_file_path&quot;: &quot;C:/Projects/backend-dev&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
+   }
+ }</component>
+@@ -75,7 +80,7 @@
+       <recent name="test.example.controller" />
+     </key>
+   </component>
+-  <component name="RunManager" selected="Application.Main">
++  <component name="RunManager" selected="JUnit.RegressionTests">
+     <configuration name="Driver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="org.example.config.Driver" />
+       <module name="Calculadora_MVC" />
+@@ -102,47 +107,46 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="SmokeTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="RegressionTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="Calculadora_MVC" />
+       <extension name="coverage">
+         <pattern>
+-          <option name="PATTERN" value="test.runs.suites.smoke.*" />
++          <option name="PATTERN" value="test.runs.suites.regression.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
+-      <option name="PACKAGE_NAME" value="test.runs.suites.smoke" />
+-      <option name="MAIN_CLASS_NAME" value="test.runs.suites.smoke.SmokeTests" />
++      <option name="PACKAGE_NAME" value="test.runs.suites.regression" />
++      <option name="MAIN_CLASS_NAME" value="test.runs.suites.regression.RegressionTests" />
+       <option name="TEST_OBJECT" value="class" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="SomaServiceTest.shouldSum" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="SmokeTests (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="Calculadora_MVC" />
+       <extension name="coverage">
+         <pattern>
+-          <option name="PATTERN" value="test.example.service.*" />
++          <option name="PATTERN" value="test.runs.suites.regression.smoke.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
+-      <option name="PACKAGE_NAME" value="test.example.service" />
+-      <option name="MAIN_CLASS_NAME" value="test.example.service.SomaServiceTest" />
+-      <option name="METHOD_NAME" value="shouldSum" />
+-      <option name="TEST_OBJECT" value="method" />
++      <option name="PACKAGE_NAME" value="test.runs.suites.regression.smoke" />
++      <option name="MAIN_CLASS_NAME" value="test.runs.suites.regression.smoke.SmokeTests" />
++      <option name="TEST_OBJECT" value="class" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="regression" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="SmokeTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="Calculadora_MVC" />
+       <extension name="coverage">
+         <pattern>
+-          <option name="PATTERN" value="test.runs.suites.regression.*" />
++          <option name="PATTERN" value="test.runs.suites.smoke.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
+-      <option name="PACKAGE_NAME" value="test.runs.suites.regression" />
+-      <option name="MAIN_CLASS_NAME" value="test.runs.suites.regression.regression" />
++      <option name="PACKAGE_NAME" value="test.runs.suites.smoke" />
++      <option name="MAIN_CLASS_NAME" value="test.runs.suites.smoke.SmokeTests" />
+       <option name="TEST_OBJECT" value="class" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+@@ -150,11 +154,11 @@
+     </configuration>
+     <recent_temporary>
+       <list>
++        <item itemvalue="JUnit.RegressionTests" />
++        <item itemvalue="JUnit.SmokeTests" />
++        <item itemvalue="Application.Driver" />
+         <item itemvalue="Application.Main" />
+-        <item itemvalue="Application.Driver" />
+-        <item itemvalue="JUnit.regression" />
+-        <item itemvalue="JUnit.SmokeTests" />
+-        <item itemvalue="JUnit.SomaServiceTest.shouldSum" />
++        <item itemvalue="JUnit.SmokeTests (1)" />
+       </list>
+     </recent_temporary>
+   </component>
+@@ -188,7 +192,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1726845609877</updated>
+     </task>
+-    <option name="localTasksCounter" value="4" />
++    <task id="LOCAL-00004" summary="21/09/2024">
++      <created>1726958104041</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1726958104041</updated>
++    </task>
++    <option name="localTasksCounter" value="5" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -205,6 +216,7 @@
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="initial" />
+     <MESSAGE value="20/09/2024" />
+-    <option name="LAST_COMMIT_MESSAGE" value="20/09/2024" />
++    <MESSAGE value="21/09/2024" />
++    <option name="LAST_COMMIT_MESSAGE" value="21/09/2024" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: src/main/java/org/example/config/ConnectionFactory.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.config;\r\n\r\nimport java.sql.Connection;\r\nimport java.sql.DriverManager;\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.SQLException;\r\n\r\npublic class ConnectionFactory {\r\n    public static Connection getConnection() throws SQLException {\r\n        String url = \"jdbc:mysql://localhost:3306/calculadora_mvc\";\r\n        String user = \"root\";\r\n        String password = \"\";\r\n\r\n        try {\r\n            Class.forName(\"com.mysql.cj.jdbc.Driver\");\r\n            return DriverManager.getConnection(url, user, password);\r\n        } catch (ClassNotFoundException e) {\r\n            throw new SQLException(e);\r\n        }\r\n    }\r\n\r\n    public PreparedStatement prepareStatement(String query) throws SQLException {\r\n        String url = \"jdbc:mysql://localhost:3306/calculadora_mvc\";\r\n        String user = \"root\";\r\n        String password = \"\";\r\n\r\n        try {\r\n            Class.forName(\"com.mysql.cj.jdbc.Driver\");\r\n            return (PreparedStatement) DriverManager.getConnection(url, user, password);\r\n        } catch (ClassNotFoundException e) {\r\n            throw new SQLException(e);\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/config/ConnectionFactory.java b/src/main/java/org/example/config/ConnectionFactory.java
+--- a/src/main/java/org/example/config/ConnectionFactory.java	(revision 72c1df61b491476595f5c5a2330744f04ef0d5c6)
++++ b/src/main/java/org/example/config/ConnectionFactory.java	(date 1727534833654)
+@@ -2,11 +2,14 @@
+ 
+ import java.sql.Connection;
+ import java.sql.DriverManager;
+-import java.sql.PreparedStatement;
+ import java.sql.SQLException;
+ 
+ public class ConnectionFactory {
+-    public static Connection getConnection() throws SQLException {
++
++    public ConnectionFactory() throws SQLException {
++        getConnection();
++    }
++    private static Connection getConnection() throws SQLException {
+         String url = "jdbc:mysql://localhost:3306/calculadora_mvc";
+         String user = "root";
+         String password = "";
+@@ -19,16 +22,4 @@
+         }
+     }
+ 
+-    public PreparedStatement prepareStatement(String query) throws SQLException {
+-        String url = "jdbc:mysql://localhost:3306/calculadora_mvc";
+-        String user = "root";
+-        String password = "";
+-
+-        try {
+-            Class.forName("com.mysql.cj.jdbc.Driver");
+-            return (PreparedStatement) DriverManager.getConnection(url, user, password);
+-        } catch (ClassNotFoundException e) {
+-            throw new SQLException(e);
+-        }
+-    }
+ }
+Index: src/main/java/org/example/config/security/RandomNumber.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/config/security/RandomNumber.java b/src/main/java/org/example/config/security/RandomNumber.java
+new file mode 100644
+--- /dev/null	(date 1727526127282)
++++ b/src/main/java/org/example/config/security/RandomNumber.java	(date 1727526127282)
+@@ -0,0 +1,19 @@
++package org.example.config.security;
++
++import java.security.SecureRandom;
++
++public class RandomNumber {
++
++    private static final SecureRandom randomicNumber = new SecureRandom();
++
++    private  RandomNumber(){}
++
++    public static int getNumber(){
++        return convertedSecureRandomToInt();
++    }
++
++    private static int convertedSecureRandomToInt(){
++        return randomicNumber.nextInt(10000);
++    }
++
++}
+Index: src/main/java/org/example/repository/subtracao/SubtracaoRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.repository.subtracao;\r\n\r\nimport org.example.model.operations.OperationModel;\r\nimport org.example.repository.CalculadoraRepository;\r\n\r\npublic class SubtracaoRepository implements CalculadoraRepository {\r\n\r\n    @Override\r\n    public void save(OperationModel operationModel) {\r\n\r\n    }\r\n\r\n    @Override\r\n    public void update(OperationModel operationModel) {\r\n\r\n    }\r\n\r\n    @Override\r\n    public void delete() {\r\n\r\n    }\r\n\r\n    @Override\r\n    public void find() {\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/repository/subtracao/SubtracaoRepository.java b/src/main/java/org/example/repository/subtracao/SubtracaoRepository.java
+--- a/src/main/java/org/example/repository/subtracao/SubtracaoRepository.java	(revision 72c1df61b491476595f5c5a2330744f04ef0d5c6)
++++ b/src/main/java/org/example/repository/subtracao/SubtracaoRepository.java	(date 1727531607650)
+@@ -3,11 +3,30 @@
+ import org.example.model.operations.OperationModel;
+ import org.example.repository.CalculadoraRepository;
+ 
++import java.sql.Connection;
++import java.sql.PreparedStatement;
++import java.sql.SQLException;
++
+ public class SubtracaoRepository implements CalculadoraRepository {
+ 
++    private Connection connection;
++
++
++    public SubtracaoRepository(Connection connection) {
++        this.connection = connection;
++    }
+     @Override
+-    public void save(OperationModel operationModel) {
++    public void save(OperationModel operationModel) throws SQLException {
++        String query = "INSERT INTO operacoes (id_operacao, operationTypeId, number1, number2, result) VALUES (?, ?, ?, ?, ?)";
++        try (PreparedStatement stmt = connection.prepareStatement(query)) {
++            stmt.setInt(1, operationModel.getIdOperacao());
++            stmt.setString(2, operationModel.getOperationType());
++            stmt.setInt(3, operationModel.getNumber1());
++            stmt.setInt(4, operationModel.getNumber2());
++            stmt.setInt(5, operationModel.getResult());
+ 
++            stmt.executeUpdate();
++        }
+     }
+ 
+     @Override
+Index: src/main/java/org/example/repository/divisao/DivisionRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.repository.divisao;\r\n\r\nimport org.example.model.operations.OperationModel;\r\nimport org.example.repository.CalculadoraRepository;\r\n\r\npublic class DivisionRepository implements CalculadoraRepository {\r\n\r\n    @Override\r\n    public void save(OperationModel operationModel) {\r\n\r\n    }\r\n\r\n    @Override\r\n    public void update(OperationModel operationModel) {\r\n\r\n    }\r\n\r\n    @Override\r\n    public void delete() {\r\n\r\n    }\r\n\r\n    @Override\r\n    public void find() {\r\n\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/repository/divisao/DivisionRepository.java b/src/main/java/org/example/repository/divisao/DivisionRepository.java
+--- a/src/main/java/org/example/repository/divisao/DivisionRepository.java	(revision 72c1df61b491476595f5c5a2330744f04ef0d5c6)
++++ b/src/main/java/org/example/repository/divisao/DivisionRepository.java	(date 1727531650932)
+@@ -3,10 +3,30 @@
+ import org.example.model.operations.OperationModel;
+ import org.example.repository.CalculadoraRepository;
+ 
++import java.sql.Connection;
++import java.sql.PreparedStatement;
++import java.sql.SQLException;
++
+ public class DivisionRepository implements CalculadoraRepository {
+ 
++    private Connection connection;
++
++    public DivisionRepository(Connection connection){
++        this.connection = connection;
++
++    }
+     @Override
+-    public void save(OperationModel operationModel) {
++    public void save(OperationModel operationModel) throws SQLException {
++        String query = "INSERT INTO operacoes (id_operacao, operationTypeId, number1, number2, result) VALUES (?, ?, ?, ?, ?)";
++        try (PreparedStatement stmt = connection.prepareStatement(query)) {
++            stmt.setInt(1, operationModel.getIdOperacao());
++            stmt.setString(2, operationModel.getOperationType());
++            stmt.setInt(3, operationModel.getNumber1());
++            stmt.setInt(4, operationModel.getNumber2());
++            stmt.setInt(5, operationModel.getResult());
++
++            stmt.executeUpdate();
++        }
+ 
+     }
+ 
+Index: src/main/java/org/example/repository/multiplicacao/MultiplicacaoRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.repository.multiplicacao;\r\n\r\nimport org.example.model.operations.OperationModel;\r\nimport org.example.repository.CalculadoraRepository;\r\n\r\npublic class MultiplicacaoRepository implements CalculadoraRepository {\r\n\r\n    @Override\r\n    public void save(OperationModel operationModel) {\r\n\r\n    }\r\n\r\n    @Override\r\n    public void update(OperationModel operationModel) {\r\n\r\n    }\r\n\r\n    @Override\r\n    public void delete() {\r\n\r\n    }\r\n\r\n    @Override\r\n    public void find() {\r\n\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/repository/multiplicacao/MultiplicacaoRepository.java b/src/main/java/org/example/repository/multiplicacao/MultiplicacaoRepository.java
+--- a/src/main/java/org/example/repository/multiplicacao/MultiplicacaoRepository.java	(revision 72c1df61b491476595f5c5a2330744f04ef0d5c6)
++++ b/src/main/java/org/example/repository/multiplicacao/MultiplicacaoRepository.java	(date 1726962620502)
+@@ -3,10 +3,29 @@
+ import org.example.model.operations.OperationModel;
+ import org.example.repository.CalculadoraRepository;
+ 
++import java.sql.Connection;
++import java.sql.PreparedStatement;
++import java.sql.SQLException;
++
+ public class MultiplicacaoRepository implements CalculadoraRepository {
+ 
++    private Connection connection;
++
++    public MultiplicacaoRepository(Connection connection){
++        this.connection =  connection;
++    }
+     @Override
+-    public void save(OperationModel operationModel) {
++    public void save(OperationModel operationModel) throws SQLException {
++        String query = "INSERT INTO operacoes (id_operacao, operationTypeId, number1, number2, result) VALUES (?, ?, ?, ?, ?)";
++        try (PreparedStatement stmt = connection.prepareStatement(query)) {
++            stmt.setInt(1, operationModel.getIdOperacao());
++            stmt.setString(2, operationModel.getOperationType());
++            stmt.setInt(3, operationModel.getNumber1());
++            stmt.setInt(4, operationModel.getNumber2());
++            stmt.setInt(5, operationModel.getResult());
++
++            stmt.executeUpdate();
++        }
+ 
+     }
+ 
+Index: src/main/java/org/example/controller/divisao/DivisaoController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.controller.divisao;\r\n\r\nimport org.example.controller.OperacaoMatematica;\r\nimport org.example.service.ValidacaoService;\r\nimport org.example.service.divisao.DivisaoService;\r\n\r\npublic class DivisaoController implements OperacaoMatematica {\r\n    private final DivisaoService divisaoService;\r\n    private final ValidacaoService validacaoService;\r\n\r\n\r\n    public DivisaoController(DivisaoService divisaoService, ValidacaoService validacaoService){\r\n        this.divisaoService = divisaoService;\r\n        this.validacaoService =  validacaoService;\r\n    }\r\n\r\n    @Override\r\n    public Integer calcular(Integer number_1, Integer number_2){\r\n        validacaoService.checkIfIntegers(number_1, number_2);\r\n        validacaoService.divisionByZero(number_2);\r\n        return divisaoService.divisao(number_1, number_2);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/controller/divisao/DivisaoController.java b/src/main/java/org/example/controller/divisao/DivisaoController.java
+--- a/src/main/java/org/example/controller/divisao/DivisaoController.java	(revision 72c1df61b491476595f5c5a2330744f04ef0d5c6)
++++ b/src/main/java/org/example/controller/divisao/DivisaoController.java	(date 1727534972495)
+@@ -15,9 +15,8 @@
+     }
+ 
+     @Override
+-    public Integer calcular(Integer number_1, Integer number_2){
+-        validacaoService.checkIfIntegers(number_1, number_2);
+-        validacaoService.divisionByZero(number_2);
+-        return divisaoService.divisao(number_1, number_2);
++    public Integer calcular(Integer numberOne, Integer numberTwo){
++        validacaoService.checkIfIntegers(numberOne, numberTwo);
++        return divisaoService.divisao(numberOne, numberTwo);
+     }
+ }
+Index: src/main/java/org/example/view/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.view;\r\n\r\nimport org.example.controller.soma.SomaController;\r\nimport org.example.model.operations.OperationModel;\r\nimport org.example.repository.soma.SomaRepository;\r\nimport org.example.service.ValidacaoService;\r\nimport org.example.service.soma.SomaService;\r\n\r\nimport java.sql.Connection;\r\nimport java.sql.DriverManager;\r\nimport java.sql.SQLException;\r\n\r\npublic class Main {\r\n    public static void main(String[] args) {\r\n        try {\r\n            // Cria a conexão com o banco de dados\r\n            Connection connection = DriverManager.getConnection(\"jdbc:mysql://localhost:3306/calculadora_mvc\", \"root\", \"\");\r\n\r\n            // Cria as instâncias necessárias\r\n            SomaRepository somaRepository = new SomaRepository(connection);\r\n            SomaService somaService = new SomaService(somaRepository);\r\n            ValidacaoService validacaoService = new ValidacaoService(5, 10);\r\n            SomaController somaController = new SomaController(somaService, validacaoService);\r\n\r\n            // Chama o controlador para calcular a soma e salvar no banco\r\n            Integer resultadoSoma = somaController.calcular(5, 10);\r\n            System.out.println(\"Resultado da soma: \" + resultadoSoma);\r\n\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/view/Main.java b/src/main/java/org/example/view/Main.java
+--- a/src/main/java/org/example/view/Main.java	(revision 72c1df61b491476595f5c5a2330744f04ef0d5c6)
++++ b/src/main/java/org/example/view/Main.java	(date 1727533075555)
+@@ -1,10 +1,18 @@
+ package org.example.view;
+ 
++import org.example.controller.divisao.DivisaoController;
++import org.example.controller.multiplicacao.MultiplicacaoController;
+ import org.example.controller.soma.SomaController;
+-import org.example.model.operations.OperationModel;
++import org.example.controller.subtracao.SubtracaoController;
++import org.example.repository.divisao.DivisionRepository;
++import org.example.repository.multiplicacao.MultiplicacaoRepository;
+ import org.example.repository.soma.SomaRepository;
++import org.example.repository.subtracao.SubtracaoRepository;
+ import org.example.service.ValidacaoService;
++import org.example.service.divisao.DivisaoService;
++import org.example.service.multiplicacao.MultiplicacaoService;
+ import org.example.service.soma.SomaService;
++import org.example.service.subtracao.SubtracaoService;
+ 
+ import java.sql.Connection;
+ import java.sql.DriverManager;
+@@ -16,15 +24,36 @@
+             // Cria a conexão com o banco de dados
+             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/calculadora_mvc", "root", "");
+ 
+-            // Cria as instâncias necessárias
++            // Soma Instances
+             SomaRepository somaRepository = new SomaRepository(connection);
++            DivisionRepository divisionRepository =  new DivisionRepository(connection);
++            MultiplicacaoRepository multiplicacaoRepository = new MultiplicacaoRepository(connection);
++            SubtracaoRepository subtracaoRepository =  new SubtracaoRepository(connection);
++
+             SomaService somaService = new SomaService(somaRepository);
++            DivisaoService divisaoService = new DivisaoService(divisionRepository);
++            MultiplicacaoService multiplicacaoService =  new MultiplicacaoService(multiplicacaoRepository);
++            SubtracaoService subtracaoService =  new SubtracaoService(subtracaoRepository);
++
++
+             ValidacaoService validacaoService = new ValidacaoService(5, 10);
+             SomaController somaController = new SomaController(somaService, validacaoService);
++            DivisaoController divisaoController =  new DivisaoController(divisaoService, validacaoService);
++            MultiplicacaoController multiplicacaoController = new MultiplicacaoController(multiplicacaoService, validacaoService);
++            SubtracaoController subtracaoController =  new SubtracaoController(subtracaoService, validacaoService);
++
+ 
+             // Chama o controlador para calcular a soma e salvar no banco
+             Integer resultadoSoma = somaController.calcular(5, 10);
++            Integer resultadoDivisao = divisaoController.calcular(10, 5);
++            Integer resultadoMultiplicacao = multiplicacaoController.calcular(10, 5);
++            Integer resultadoSubtracao = subtracaoController.calcular(10, 5);
++
++
+             System.out.println("Resultado da soma: " + resultadoSoma);
++            System.out.println("Resultado da divisao: " + resultadoDivisao);
++            System.out.println("Resultado da multiplicacao: " + resultadoMultiplicacao);
++            System.out.println("Resultado da subtracao: " + resultadoSubtracao);
+ 
+         } catch (SQLException e) {
+             e.printStackTrace();
+Index: src/main/java/org/example/controller/CalculoController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.controller;\r\n\r\n\r\nimport java.util.Map;\r\n\r\npublic class CalculoController {\r\n    private final Map<String, OperacaoMatematica> operacoes;\r\n\r\n\r\n    public CalculoController(Map<String, OperacaoMatematica> operacoes){\r\n        this.operacoes = operacoes;\r\n    }\r\n\r\n    public Integer calcular(String operacao, Integer number_1, Integer number_2){\r\n        OperacaoMatematica operacaoMatematica = operacoes.get(operacao);\r\n\r\n        if (!operacao.equals(\"soma\") && !operacao.equals(\"subtracao\") && !operacao.equals(\"multiplicacao\") && !operacao.equals(\"divisao\")) {\r\n            throw new IllegalArgumentException(\"Operação inválida\");\r\n        }\r\n\r\n        if(operacaoMatematica == null){\r\n            throw new IllegalArgumentException(\"Numbers cannor be null\");\r\n        }\r\n\r\n        return operacaoMatematica.calcular(number_1, number_2);\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/controller/CalculoController.java b/src/main/java/org/example/controller/CalculoController.java
+--- a/src/main/java/org/example/controller/CalculoController.java	(revision 72c1df61b491476595f5c5a2330744f04ef0d5c6)
++++ b/src/main/java/org/example/controller/CalculoController.java	(date 1727537678204)
+@@ -11,7 +11,7 @@
+         this.operacoes = operacoes;
+     }
+ 
+-    public Integer calcular(String operacao, Integer number_1, Integer number_2){
++    public Integer calcular(String operacao, int numberOne, int numberTwo){
+         OperacaoMatematica operacaoMatematica = operacoes.get(operacao);
+ 
+         if (!operacao.equals("soma") && !operacao.equals("subtracao") && !operacao.equals("multiplicacao") && !operacao.equals("divisao")) {
+@@ -22,7 +22,7 @@
+             throw new IllegalArgumentException("Numbers cannor be null");
+         }
+ 
+-        return operacaoMatematica.calcular(number_1, number_2);
++        return operacaoMatematica.calcular(numberOne, numberTwo);
+     }
+ 
+ }
+Index: src/main/java/org/example/controller/soma/SomaController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.controller.soma;\r\n\r\nimport org.example.controller.OperacaoMatematica;\r\nimport org.example.service.ValidacaoService;\r\nimport org.example.service.soma.SomaService;\r\n\r\npublic class SomaController implements OperacaoMatematica {\r\n    private final SomaService somaService;\r\n    private final ValidacaoService validacaoSomaService;\r\n\r\n\r\n    public SomaController(SomaService somaService, ValidacaoService validacaoSomaService){\r\n         this.somaService = somaService;\r\n         this.validacaoSomaService =  validacaoSomaService;\r\n    }\r\n\r\n    @Override\r\n    public Integer calcular(Integer number_1, Integer number_2){\r\n        validacaoSomaService.checkIfIntegers(number_1, number_2);\r\n        return somaService.soma(number_1, number_2);\r\n    }\r\n\r\n\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/controller/soma/SomaController.java b/src/main/java/org/example/controller/soma/SomaController.java
+--- a/src/main/java/org/example/controller/soma/SomaController.java	(revision 72c1df61b491476595f5c5a2330744f04ef0d5c6)
++++ b/src/main/java/org/example/controller/soma/SomaController.java	(date 1727535028873)
+@@ -15,9 +15,9 @@
+     }
+ 
+     @Override
+-    public Integer calcular(Integer number_1, Integer number_2){
+-        validacaoSomaService.checkIfIntegers(number_1, number_2);
+-        return somaService.soma(number_1, number_2);
++    public Integer calcular(Integer numberOne, Integer numberTwo){
++        validacaoSomaService.checkIfIntegers(numberOne, numberTwo);
++        return somaService.soma(numberOne, numberTwo);
+     }
+ 
+ 
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\r\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n    <modelVersion>4.0.0</modelVersion>\r\n\r\n    <groupId>org.example</groupId>\r\n    <artifactId>Calculadora_MVC</artifactId>\r\n    <version>1.0-SNAPSHOT</version>\r\n\r\n    <properties>\r\n        <maven.compiler.source>17</maven.compiler.source>\r\n        <maven.compiler.target>17</maven.compiler.target>\r\n        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\r\n    </properties>\r\n    <dependencies>\r\n        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->\r\n        <dependency>\r\n            <groupId>org.junit.jupiter</groupId>\r\n            <artifactId>junit-jupiter-engine</artifactId>\r\n            <version>5.11.0</version>\r\n            <scope>test</scope>\r\n        </dependency>\r\n        <!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-suite-engine -->\r\n        <dependency>\r\n            <groupId>org.junit.platform</groupId>\r\n            <artifactId>junit-platform-suite-engine</artifactId>\r\n            <version>1.11.0</version>\r\n            <scope>test</scope>\r\n        </dependency>\r\n        <!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-suite-api -->\r\n        <dependency>\r\n            <groupId>org.junit.platform</groupId>\r\n            <artifactId>junit-platform-suite-api</artifactId>\r\n            <version>1.11.0</version>\r\n            <scope>test</scope>\r\n        </dependency>\r\n\r\n        <!-- Mockito para mocking -->\r\n        <dependency>\r\n            <groupId>org.mockito</groupId>\r\n            <artifactId>mockito-core</artifactId>\r\n            <version>3.9.0</version>\r\n            <scope>test</scope>\r\n        </dependency>\r\n        <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->\r\n        <dependency>\r\n            <groupId>com.mysql</groupId>\r\n            <artifactId>mysql-connector-j</artifactId>\r\n            <version>9.0.0</version>\r\n        </dependency>\r\n\r\n    </dependencies>\r\n\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+--- a/pom.xml	(revision 72c1df61b491476595f5c5a2330744f04ef0d5c6)
++++ b/pom.xml	(date 1727535677669)
+@@ -12,6 +12,8 @@
+         <maven.compiler.source>17</maven.compiler.source>
+         <maven.compiler.target>17</maven.compiler.target>
+         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
++        <sonar.host.url>http://localhost:9000</sonar.host.url>
++        <sonar.token>sqa_1e3319dc49a75128fee8930aea9ba6acdcd2d80c</sonar.token>
+     </properties>
+     <dependencies>
+         <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
+@@ -35,6 +37,14 @@
+             <version>1.11.0</version>
+             <scope>test</scope>
+         </dependency>
++        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-params -->
++        <dependency>
++            <groupId>org.junit.jupiter</groupId>
++            <artifactId>junit-jupiter-params</artifactId>
++            <version>5.11.1</version>
++            <scope>test</scope>
++        </dependency>
++
+ 
+         <!-- Mockito para mocking -->
+         <dependency>
+Index: src/main/java/org/example/service/divisao/DivisaoService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.service.divisao;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic class DivisaoService {\r\n\r\n    private Integer number_1;\r\n    private Integer number_2;\r\n\r\n\r\n    public DivisaoService(Integer number_1, Integer number_2){\r\n        this.number_1 =  number_1;\r\n        this.number_2 =  number_2;\r\n    }\r\n\r\n    public Integer divisao(Integer number_1, Integer number_2){\r\n        return number_1 / number_2;\r\n    }\r\n\r\n    private Integer getNumber_1(){\r\n        return number_1;\r\n    }\r\n\r\n    private Integer getNumber_2(){\r\n        return number_2;\r\n    }\r\n\r\n    public List<Integer> addNumbersToList(){\r\n        List<Integer> listNumbers =  new ArrayList<>();\r\n        listNumbers.add(getNumber_1());\r\n        listNumbers.add(getNumber_2());\r\n\r\n        return listNumbers;\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/service/divisao/DivisaoService.java b/src/main/java/org/example/service/divisao/DivisaoService.java
+--- a/src/main/java/org/example/service/divisao/DivisaoService.java	(revision 72c1df61b491476595f5c5a2330744f04ef0d5c6)
++++ b/src/main/java/org/example/service/divisao/DivisaoService.java	(date 1727531919837)
+@@ -1,37 +1,30 @@
+ package org.example.service.divisao;
+ 
+-import java.util.ArrayList;
+-import java.util.List;
++import org.example.config.security.RandomNumber;
++import org.example.model.operations.OperationModel;
++import org.example.repository.divisao.DivisionRepository;
++import java.sql.SQLException;
+ 
+ public class DivisaoService {
+ 
+-    private Integer number_1;
+-    private Integer number_2;
+-
+-
+-    public DivisaoService(Integer number_1, Integer number_2){
+-        this.number_1 =  number_1;
+-        this.number_2 =  number_2;
++    private final int randomId = RandomNumber.getNumber();
++    private final DivisionRepository divisionRepository;
++    public DivisaoService(DivisionRepository divisionRepository){
++        this.divisionRepository =  divisionRepository;
+     }
+ 
+-    public Integer divisao(Integer number_1, Integer number_2){
+-        return number_1 / number_2;
+-    }
++    public Integer divisao(Integer numberOne, Integer numberTwo){
+ 
+-    private Integer getNumber_1(){
+-        return number_1;
+-    }
++        int result = numberOne / numberTwo;
+ 
+-    private Integer getNumber_2(){
+-        return number_2;
+-    }
++        OperationModel operation = new OperationModel(randomId, "divisao", numberOne, numberTwo, result);
++        try {
++            divisionRepository.save(operation);  // Salva a operação no banco
++        } catch (SQLException e) {
++            e.printStackTrace();  // Lida com possíveis erros de SQL
++        }
+ 
+-    public List<Integer> addNumbersToList(){
+-        List<Integer> listNumbers =  new ArrayList<>();
+-        listNumbers.add(getNumber_1());
+-        listNumbers.add(getNumber_2());
+-
+-        return listNumbers;
++        return result;
+     }
+ 
+ }
+Index: src/main/java/org/example/controller/multiplicacao/MultiplicacaoController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.controller.multiplicacao;\r\n\r\nimport org.example.controller.OperacaoMatematica;\r\nimport org.example.service.ValidacaoService;\r\nimport org.example.service.multiplicacao.MultiplicacaoService;\r\n\r\npublic class MultiplicacaoController implements OperacaoMatematica {\r\n    private final MultiplicacaoService multiplicacaoService;\r\n    private final ValidacaoService validacaoService;\r\n\r\n\r\n    public MultiplicacaoController(MultiplicacaoService multiplicacaoService, ValidacaoService validacaoService){\r\n        this.multiplicacaoService = multiplicacaoService;\r\n        this.validacaoService =  validacaoService;\r\n    }\r\n\r\n    @Override\r\n    public Integer calcular(Integer number_1, Integer number_2){\r\n        validacaoService.checkIfIntegers(number_1, number_2);\r\n        return multiplicacaoService.multiplicacao(number_1, number_2);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/controller/multiplicacao/MultiplicacaoController.java b/src/main/java/org/example/controller/multiplicacao/MultiplicacaoController.java
+--- a/src/main/java/org/example/controller/multiplicacao/MultiplicacaoController.java	(revision 72c1df61b491476595f5c5a2330744f04ef0d5c6)
++++ b/src/main/java/org/example/controller/multiplicacao/MultiplicacaoController.java	(date 1727535010723)
+@@ -15,8 +15,8 @@
+     }
+ 
+     @Override
+-    public Integer calcular(Integer number_1, Integer number_2){
+-        validacaoService.checkIfIntegers(number_1, number_2);
+-        return multiplicacaoService.multiplicacao(number_1, number_2);
++    public Integer calcular(Integer numberOne, Integer numberTwo){
++        validacaoService.checkIfIntegers(numberOne, numberTwo);
++        return multiplicacaoService.multiplicacao(numberOne, numberTwo);
+     }
+ }
+Index: src/main/java/org/example/controller/subtracao/SubtracaoController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.controller.subtracao;\r\n\r\nimport org.example.controller.OperacaoMatematica;\r\nimport org.example.service.ValidacaoService;\r\nimport org.example.service.subtracao.SubtracaoService;\r\n\r\npublic class SubtracaoController implements OperacaoMatematica {\r\n    private final SubtracaoService subtracaoService;\r\n    private final ValidacaoService validacaoService;\r\n\r\n\r\n    public SubtracaoController(SubtracaoService subtracaoService, ValidacaoService validacaoService){\r\n        this.subtracaoService = subtracaoService;\r\n        this.validacaoService =  validacaoService;\r\n    }\r\n\r\n    @Override\r\n    public Integer calcular(Integer number_1, Integer number_2){\r\n        validacaoService.checkIfIntegers(number_1, number_2);\r\n        return subtracaoService.subtracao(number_1, number_2);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/controller/subtracao/SubtracaoController.java b/src/main/java/org/example/controller/subtracao/SubtracaoController.java
+--- a/src/main/java/org/example/controller/subtracao/SubtracaoController.java	(revision 72c1df61b491476595f5c5a2330744f04ef0d5c6)
++++ b/src/main/java/org/example/controller/subtracao/SubtracaoController.java	(date 1727535044073)
+@@ -15,8 +15,8 @@
+     }
+ 
+     @Override
+-    public Integer calcular(Integer number_1, Integer number_2){
+-        validacaoService.checkIfIntegers(number_1, number_2);
+-        return subtracaoService.subtracao(number_1, number_2);
++    public Integer calcular(Integer numberOne, Integer numberTwo){
++        validacaoService.checkIfIntegers(numberOne, numberTwo);
++        return subtracaoService.subtracao(numberOne, numberTwo);
+     }
+ }
+Index: src/main/java/org/example/controller/OperacaoMatematica.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.controller;\r\n\r\npublic interface OperacaoMatematica {\r\n    Integer calcular(Integer number_1, Integer number_2);\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/controller/OperacaoMatematica.java b/src/main/java/org/example/controller/OperacaoMatematica.java
+--- a/src/main/java/org/example/controller/OperacaoMatematica.java	(revision 72c1df61b491476595f5c5a2330744f04ef0d5c6)
++++ b/src/main/java/org/example/controller/OperacaoMatematica.java	(date 1727534928348)
+@@ -1,5 +1,5 @@
+ package org.example.controller;
+ 
+ public interface OperacaoMatematica {
+-    Integer calcular(Integer number_1, Integer number_2);
++    Integer calcular(Integer number1, Integer number2);
+ }
+Index: src/main/java/org/example/service/multiplicacao/MultiplicacaoService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.service.multiplicacao;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic class MultiplicacaoService {\r\n\r\n    private Integer number_1;\r\n    private Integer number_2;\r\n\r\n\r\n    public MultiplicacaoService(Integer number_1, Integer number_2){\r\n        this.number_1 =  number_1;\r\n        this.number_2 =  number_2;\r\n    }\r\n\r\n    public Integer multiplicacao(Integer number_1, Integer number_2){\r\n        return number_1 * number_2;\r\n    }\r\n\r\n    private Integer getNumber_1(){\r\n        return number_1;\r\n    }\r\n\r\n    private Integer getNumber_2(){\r\n        return number_2;\r\n    }\r\n\r\n    public List<Integer> addNumbersToList(){\r\n        List<Integer> listNumbers =  new ArrayList<>();\r\n        listNumbers.add(getNumber_1());\r\n        listNumbers.add(getNumber_2());\r\n\r\n        return listNumbers;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/service/multiplicacao/MultiplicacaoService.java b/src/main/java/org/example/service/multiplicacao/MultiplicacaoService.java
+--- a/src/main/java/org/example/service/multiplicacao/MultiplicacaoService.java	(revision 72c1df61b491476595f5c5a2330744f04ef0d5c6)
++++ b/src/main/java/org/example/service/multiplicacao/MultiplicacaoService.java	(date 1727534434918)
+@@ -1,35 +1,56 @@
+ package org.example.service.multiplicacao;
+ 
++
++import org.example.config.security.RandomNumber;
++import org.example.model.operations.OperationModel;
++import org.example.repository.multiplicacao.MultiplicacaoRepository;
++
++import java.sql.SQLException;
+ import java.util.ArrayList;
+ import java.util.List;
+ 
+ public class MultiplicacaoService {
+ 
+-    private Integer number_1;
+-    private Integer number_2;
++    private Integer number1;
++    private Integer number2;
+ 
++    private final int randomId = RandomNumber.getNumber();
++    private MultiplicacaoRepository multiplicacaoRepository;
+ 
+-    public MultiplicacaoService(Integer number_1, Integer number_2){
+-        this.number_1 =  number_1;
+-        this.number_2 =  number_2;
++    public MultiplicacaoService(MultiplicacaoRepository multiplicacaoRepository){
++        this.multiplicacaoRepository =  multiplicacaoRepository;
+     }
+ 
+-    public Integer multiplicacao(Integer number_1, Integer number_2){
+-        return number_1 * number_2;
++    public MultiplicacaoService(Integer numberOne, Integer numberTwo){
++        this.number1 =  numberOne;
++        this.number2 =  numberTwo;
+     }
+ 
+-    private Integer getNumber_1(){
+-        return number_1;
+-    }
++    public Integer multiplicacao(Integer numberOne, Integer numberTwo){
++        int result = numberOne * numberTwo;
++
++        OperationModel operation = new OperationModel(randomId, "multiplicacao", numberOne, numberTwo, result);
++        try {
++            multiplicacaoRepository.save(operation);  // Salva a operação no banco
++        } catch (SQLException e) {
++            e.printStackTrace();  // Lida com possíveis erros de SQL
++        }
+ 
+-    private Integer getNumber_2(){
+-        return number_2;
++        return result;
++    }
++
++    private Integer getNumber1(){
++        return number1;
++    }
++
++    private Integer getNumber2(){
++        return number2;
+     }
+ 
+     public List<Integer> addNumbersToList(){
+         List<Integer> listNumbers =  new ArrayList<>();
+-        listNumbers.add(getNumber_1());
+-        listNumbers.add(getNumber_2());
++        listNumbers.add(getNumber1());
++        listNumbers.add(getNumber2());
+ 
+         return listNumbers;
+     }
+Index: src/main/resources/sonar.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/src/main/resources/sonar.properties b/src/main/resources/sonar.properties
+new file mode 100644
+--- /dev/null	(date 1727527563976)
++++ b/src/main/resources/sonar.properties	(date 1727527563976)
+@@ -0,0 +1,1 @@
++sonar.token=sqa_1e3319dc49a75128fee8930aea9ba6acdcd2d80c
+\ No newline at end of file
+Index: src/main/java/org/example/service/soma/SomaService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.service.soma;\r\n\r\nimport org.example.model.operations.OperationModel;\r\nimport org.example.repository.soma.SomaRepository;\r\n\r\nimport java.sql.SQLException;\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic class SomaService {\r\n    private Integer number_1;\r\n    private Integer number_2;\r\n\r\n    private SomaRepository somaRepository;\r\n    public SomaService(SomaRepository somaRepository) {\r\n        this.somaRepository = somaRepository;\r\n    }\r\n\r\n    public SomaService(Integer number_1, Integer number_2){\r\n        this.number_1 =  number_1;\r\n        this.number_2 =  number_2;\r\n\r\n    }\r\n\r\n    public Integer soma(Integer number_1, Integer number_2){\r\n        int result = number_1 + number_2;\r\n\r\n        OperationModel operation = new OperationModel(2, \"soma\", number_1, number_2, result);\r\n        try {\r\n            somaRepository.save(operation);  // Salva a operação no banco\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();  // Lida com possíveis erros de SQL\r\n        }\r\n\r\n        return result;\r\n    }\r\n\r\n    private Integer getNumber_1(){\r\n        return number_1;\r\n    }\r\n\r\n    private Integer getNumber_2(){\r\n        return number_2;\r\n    }\r\n\r\n    public List<Integer> addNumbersToList(){\r\n        List<Integer> listNumbers =  new ArrayList<>();\r\n        listNumbers.add(getNumber_1());\r\n        listNumbers.add(getNumber_2());\r\n\r\n        return listNumbers;\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/service/soma/SomaService.java b/src/main/java/org/example/service/soma/SomaService.java
+--- a/src/main/java/org/example/service/soma/SomaService.java	(revision 72c1df61b491476595f5c5a2330744f04ef0d5c6)
++++ b/src/main/java/org/example/service/soma/SomaService.java	(date 1727546528333)
+@@ -1,5 +1,6 @@
+ package org.example.service.soma;
+ 
++import org.example.config.security.RandomNumber;
+ import org.example.model.operations.OperationModel;
+ import org.example.repository.soma.SomaRepository;
+ 
+@@ -8,24 +9,19 @@
+ import java.util.List;
+ 
+ public class SomaService {
+-    private Integer number_1;
+-    private Integer number_2;
++    private Integer number1;
++    private Integer number2;
+ 
++    private final int randomId = RandomNumber.getNumber();
+     private SomaRepository somaRepository;
+     public SomaService(SomaRepository somaRepository) {
+         this.somaRepository = somaRepository;
+     }
+ 
+-    public SomaService(Integer number_1, Integer number_2){
+-        this.number_1 =  number_1;
+-        this.number_2 =  number_2;
+-
+-    }
++    public Integer soma(Integer numberOne, Integer numberTwo){
++        int result = numberOne + numberTwo;
+ 
+-    public Integer soma(Integer number_1, Integer number_2){
+-        int result = number_1 + number_2;
+-
+-        OperationModel operation = new OperationModel(2, "soma", number_1, number_2, result);
++        OperationModel operation = new OperationModel(randomId, "soma", numberOne, numberTwo, result);
+         try {
+             somaRepository.save(operation);  // Salva a operação no banco
+         } catch (SQLException e) {
+@@ -35,18 +31,18 @@
+         return result;
+     }
+ 
+-    private Integer getNumber_1(){
+-        return number_1;
++    private Integer getNumber1(){
++        return number1;
+     }
+ 
+-    private Integer getNumber_2(){
+-        return number_2;
++    private Integer getNumber2(){
++        return number2;
+     }
+ 
+     public List<Integer> addNumbersToList(){
+         List<Integer> listNumbers =  new ArrayList<>();
+-        listNumbers.add(getNumber_1());
+-        listNumbers.add(getNumber_2());
++        listNumbers.add(getNumber1());
++        listNumbers.add(getNumber2());
+ 
+         return listNumbers;
+     }
+Index: src/main/java/org/example/service/subtracao/SubtracaoService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.service.subtracao;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic class SubtracaoService {\r\n    private Integer number_1;\r\n    private Integer number_2;\r\n\r\n\r\n    public SubtracaoService(Integer number_1, Integer number_2){\r\n        this.number_1 =  number_1;\r\n        this.number_2 =  number_2;\r\n    }\r\n\r\n    public Integer subtracao(Integer number_1, Integer number_2){\r\n        return number_1 - number_2;\r\n    }\r\n\r\n    private Integer getNumber_1(){\r\n        return number_1;\r\n    }\r\n\r\n    private Integer getNumber_2(){\r\n        return number_2;\r\n    }\r\n\r\n    public List<Integer> addNumbersToList(){\r\n        List<Integer> listNumbers =  new ArrayList<>();\r\n        listNumbers.add(getNumber_1());\r\n        listNumbers.add(getNumber_2());\r\n\r\n        return listNumbers;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/service/subtracao/SubtracaoService.java b/src/main/java/org/example/service/subtracao/SubtracaoService.java
+--- a/src/main/java/org/example/service/subtracao/SubtracaoService.java	(revision 72c1df61b491476595f5c5a2330744f04ef0d5c6)
++++ b/src/main/java/org/example/service/subtracao/SubtracaoService.java	(date 1727534461336)
+@@ -1,34 +1,50 @@
+ package org.example.service.subtracao;
+ 
++import org.example.config.security.RandomNumber;
++import org.example.model.operations.OperationModel;
++import org.example.repository.subtracao.SubtracaoRepository;
++
++import java.sql.SQLException;
+ import java.util.ArrayList;
+ import java.util.List;
+ 
+ public class SubtracaoService {
+-    private Integer number_1;
+-    private Integer number_2;
++    private Integer number1;
++    private Integer number2;
++
++    private SubtracaoRepository subtracaoRepository;
++    private final int randomId = RandomNumber.getNumber();
++
++    public SubtracaoService(SubtracaoRepository subtracaoRepository) {
++        this.subtracaoRepository = subtracaoRepository;
++    }
+ 
++    public Integer subtracao(Integer numberOne, Integer numberTwo){
+ 
+-    public SubtracaoService(Integer number_1, Integer number_2){
+-        this.number_1 =  number_1;
+-        this.number_2 =  number_2;
+-    }
++       int result = numberOne - numberTwo;
++
++        OperationModel operation = new OperationModel(randomId, "subtracao", numberOne, numberTwo, result);
++        try {
++            subtracaoRepository.save(operation);  // Salva a operação no banco
++        } catch (SQLException e) {
++            e.printStackTrace();  // Lida com possíveis erros de SQL
++        }
+ 
+-    public Integer subtracao(Integer number_1, Integer number_2){
+-        return number_1 - number_2;
++        return result;
+     }
+ 
+-    private Integer getNumber_1(){
+-        return number_1;
++    private Integer getNumber1(){
++        return number1;
+     }
+ 
+-    private Integer getNumber_2(){
+-        return number_2;
++    private Integer getNumber2(){
++        return number2;
+     }
+ 
+     public List<Integer> addNumbersToList(){
+         List<Integer> listNumbers =  new ArrayList<>();
+-        listNumbers.add(getNumber_1());
+-        listNumbers.add(getNumber_2());
++        listNumbers.add(getNumber1());
++        listNumbers.add(getNumber2());
+ 
+         return listNumbers;
+     }
+Index: src/main/java/org/example/service/ValidacaoService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.service;\r\n\r\npublic class ValidacaoService {\r\n    private Integer number_1;\r\n    private Integer number_2;\r\n\r\n    public ValidacaoService(Integer number_1, Integer number_2){\r\n        this.number_1 = number_1;\r\n        this.number_2 =  number_2;\r\n    }\r\n\r\n    public boolean checkIfIntegers(Integer number_1, Integer number_2){\r\n        if(number_1 == null || number_2 == null){\r\n            throw new IllegalArgumentException(\"Numbers cannor be null\");\r\n        }\r\n        return true;\r\n    }\r\n\r\n    public boolean divisionByZero(Integer number_2){\r\n        if(number_2 == 0){\r\n            throw new ArithmeticException(\"Division by zero is not allowed.\");\r\n        }\r\n        return true;\r\n    }\r\n\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/service/ValidacaoService.java b/src/main/java/org/example/service/ValidacaoService.java
+--- a/src/main/java/org/example/service/ValidacaoService.java	(revision 72c1df61b491476595f5c5a2330744f04ef0d5c6)
++++ b/src/main/java/org/example/service/ValidacaoService.java	(date 1727531870182)
+@@ -1,28 +1,21 @@
+ package org.example.service;
+ 
+ public class ValidacaoService {
+-    private Integer number_1;
+-    private Integer number_2;
++    private final Integer number1;
++    private final Integer number2;
+ 
+-    public ValidacaoService(Integer number_1, Integer number_2){
+-        this.number_1 = number_1;
+-        this.number_2 =  number_2;
++    public ValidacaoService(Integer numberOne, Integer numberTwo){
++        this.number1 = numberOne;
++        this.number2 =  numberTwo;
++
++        checkIfIntegers(number1, number2);
+     }
+ 
+-    public boolean checkIfIntegers(Integer number_1, Integer number_2){
+-        if(number_1 == null || number_2 == null){
++    public boolean checkIfIntegers(Integer numberOne, Integer numberTwo){
++        if(numberOne == null || numberTwo == null){
+             throw new IllegalArgumentException("Numbers cannor be null");
+         }
+         return true;
+     }
+ 
+-    public boolean divisionByZero(Integer number_2){
+-        if(number_2 == 0){
+-            throw new ArithmeticException("Division by zero is not allowed.");
+-        }
+-        return true;
+-    }
+-
+-
+-
+ }
+Index: src/test/java/test/example/service/SomaServiceTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package test.example.service;\r\n\r\nimport org.example.service.soma.SomaService;\r\nimport org.junit.jupiter.api.Assertions;\r\nimport org.junit.jupiter.api.BeforeEach;\r\nimport org.junit.jupiter.api.Tag;\r\nimport org.junit.jupiter.api.Test;\r\n\r\n\r\npublic class SomaServiceTest {\r\n\r\n    public SomaService somaService;\r\n\r\n    @BeforeEach\r\n    void setup(){\r\n        somaService = new SomaService(0, 0);\r\n    }\r\n\r\n    @Tag(\"smoke\")\r\n    @Test\r\n    void shouldSum(){\r\n        Integer result = somaService.soma(2, 3);\r\n        Assertions.assertEquals(5, result);\r\n    }\r\n\r\n    @Tag(\"regression\")\r\n    @Test\r\n    void shouldNotDivide(){\r\n        Integer result = somaService.soma(3, 3);\r\n        Assertions.assertNotEquals(1, result);\r\n    }\r\n\r\n    @Tag(\"regression\")\r\n    @Test\r\n    void shouldNotMultiply(){\r\n        Integer result = somaService.soma(2, 3);\r\n        Assertions.assertNotEquals(6, result);\r\n\r\n    }\r\n\r\n    @Tag(\"regression\")\r\n    @Test\r\n    void shouldNotSubtract(){\r\n        Integer result = somaService.soma(2, 3);\r\n        Assertions.assertNotEquals(-1, result);\r\n\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/test/example/service/SomaServiceTest.java b/src/test/java/test/example/service/SomaServiceTest.java
+--- a/src/test/java/test/example/service/SomaServiceTest.java	(revision 72c1df61b491476595f5c5a2330744f04ef0d5c6)
++++ b/src/test/java/test/example/service/SomaServiceTest.java	(date 1727537566381)
+@@ -1,49 +1,56 @@
+ package test.example.service;
+ 
++import org.example.model.operations.OperationModel;
++import org.example.repository.soma.SomaRepository;
+ import org.example.service.soma.SomaService;
+ import org.junit.jupiter.api.Assertions;
+ import org.junit.jupiter.api.BeforeEach;
+ import org.junit.jupiter.api.Tag;
+ import org.junit.jupiter.api.Test;
++import org.junit.jupiter.params.ParameterizedTest;
++import org.junit.jupiter.params.provider.CsvSource;
++import org.mockito.Mockito;
++
++import java.sql.Connection;
++import java.sql.DriverManager;
++import java.sql.SQLException;
+ 
+ 
+ public class SomaServiceTest {
+ 
++    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/calculadora_mvc", "root", "");
+     public SomaService somaService;
++    public SomaRepository somaRepository = new SomaRepository(connection);
++
++    public SomaServiceTest() throws SQLException {
++    }
+ 
+     @BeforeEach
+     void setup(){
+-        somaService = new SomaService(0, 0);
++        somaRepository = Mockito.mock(somaRepository.getClass());
++        somaService =  new SomaService(somaRepository);
+     }
+ 
+     @Tag("smoke")
+     @Test
+-    void shouldSum(){
+-        Integer result = somaService.soma(2, 3);
+-        Assertions.assertEquals(5, result);
+-    }
+-
+-    @Tag("regression")
+-    @Test
+-    void shouldNotDivide(){
++    void shouldSum() throws SQLException {
+         Integer result = somaService.soma(3, 3);
+-        Assertions.assertNotEquals(1, result);
++        Assertions.assertEquals(6, result);
++        Mockito.verify(somaRepository).save(Mockito.any(OperationModel.class));
+     }
+ 
+     @Tag("regression")
+-    @Test
+-    void shouldNotMultiply(){
+-        Integer result = somaService.soma(2, 3);
+-        Assertions.assertNotEquals(6, result);
+-
++    @ParameterizedTest
++    @CsvSource({
++            "3, 3, -1",
++            "3, 3, 1",
++            "3, 3, 0",
++            "3, 3, 9"
++    })
++    void shouldNotReturnInvalidSumOperation(int numberOne, int numberTwo, int invalidSumResult){
++        Integer result = somaService.soma(numberOne, numberTwo);
++        Assertions.assertNotEquals(invalidSumResult, result);
+     }
+ 
+-    @Tag("regression")
+-    @Test
+-    void shouldNotSubtract(){
+-        Integer result = somaService.soma(2, 3);
+-        Assertions.assertNotEquals(-1, result);
+-
+-    }
+ 
+ }
+\ No newline at end of file
+Index: src/test/java/test/example/service/DivisionServiceTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package test.example.service;\r\n\r\nimport org.example.service.divisao.DivisaoService;\r\nimport org.example.service.soma.SomaService;\r\nimport org.junit.jupiter.api.Assertions;\r\nimport org.junit.jupiter.api.BeforeEach;\r\nimport org.junit.jupiter.api.Tag;\r\nimport org.junit.jupiter.api.Test;\r\n\r\npublic class DivisionServiceTest {\r\n\r\n    public DivisaoService divisaoService;\r\n\r\n    @BeforeEach\r\n    void setup(){\r\n        divisaoService = new DivisaoService(0, 0);\r\n    }\r\n\r\n    @Tag(\"smoke\")\r\n    @Test\r\n    void shouldDivide(){\r\n        Integer result = divisaoService.divisao(3, 3);\r\n        Assertions.assertEquals(1, result);\r\n    }\r\n\r\n    @Tag(\"regression\")\r\n    @Test\r\n    void shouldNotSum(){\r\n        Integer result = divisaoService.divisao(3,3);\r\n        Assertions.assertNotEquals(6, result);\r\n    }\r\n\r\n    @Tag(\"regression\")\r\n    @Test\r\n    void shouldNotMultiply(){\r\n        Integer result = divisaoService.divisao(3, 3);\r\n        Assertions.assertNotEquals(9, result);\r\n\r\n    }\r\n\r\n    @Tag(\"regression\")\r\n    @Test\r\n    void shouldNotSubtract(){\r\n        Integer result = divisaoService.divisao(3, 3);\r\n        Assertions.assertNotEquals(0, result);\r\n\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/test/example/service/DivisionServiceTest.java b/src/test/java/test/example/service/DivisionServiceTest.java
+--- a/src/test/java/test/example/service/DivisionServiceTest.java	(revision 72c1df61b491476595f5c5a2330744f04ef0d5c6)
++++ b/src/test/java/test/example/service/DivisionServiceTest.java	(date 1727537584782)
+@@ -1,40 +1,56 @@
+ package test.example.service;
+ 
++import org.example.model.operations.OperationModel;
++import org.example.repository.divisao.DivisionRepository;
++import org.example.repository.soma.SomaRepository;
+ import org.example.service.divisao.DivisaoService;
+ import org.example.service.soma.SomaService;
+ import org.junit.jupiter.api.Assertions;
+ import org.junit.jupiter.api.BeforeEach;
+ import org.junit.jupiter.api.Tag;
+ import org.junit.jupiter.api.Test;
++import org.junit.jupiter.params.ParameterizedTest;
++import org.junit.jupiter.params.provider.CsvSource;
++import org.mockito.Mockito;
++
++import java.sql.Connection;
++import java.sql.DriverManager;
++import java.sql.SQLException;
+ 
+ public class DivisionServiceTest {
+ 
++    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/calculadora_mvc", "root", "");
+     public DivisaoService divisaoService;
++    public DivisionRepository divisionRepository = new DivisionRepository(connection);
++
++    public DivisionServiceTest() throws SQLException {
++    }
+ 
+     @BeforeEach
+     void setup(){
+-        divisaoService = new DivisaoService(0, 0);
++        divisionRepository = Mockito.mock(divisionRepository.getClass());
++        divisaoService =  new DivisaoService(divisionRepository);
+     }
+ 
+     @Tag("smoke")
+     @Test
+-    void shouldDivide(){
++    void shouldDivide()  throws SQLException {
+         Integer result = divisaoService.divisao(3, 3);
+         Assertions.assertEquals(1, result);
++        Mockito.verify(divisionRepository).save(Mockito.any(OperationModel.class));
+     }
+ 
+     @Tag("regression")
+-    @Test
+-    void shouldNotSum(){
+-        Integer result = divisaoService.divisao(3,3);
+-        Assertions.assertNotEquals(6, result);
+-    }
+-
+-    @Tag("regression")
+-    @Test
+-    void shouldNotMultiply(){
+-        Integer result = divisaoService.divisao(3, 3);
+-        Assertions.assertNotEquals(9, result);
++    @ParameterizedTest
++    @CsvSource({
++            "3, 3, 0",
++            "3, 3, 6",
++            "3, 3, 9",
++            "3, 3, -1"
++    })
++    void shouldNotReturnInvalidDivisionOperation(int numberOne, int numberTwo, int invalidResult){
++        Integer result = divisaoService.divisao(numberOne, numberTwo);
++        Assertions.assertNotEquals(invalidResult, result);
+ 
+     }
+ 
+Index: src/test/java/test/example/service/MultiplyServiceTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package test.example.service;\r\n\r\nimport org.example.service.divisao.DivisaoService;\r\nimport org.example.service.multiplicacao.MultiplicacaoService;\r\nimport org.example.service.soma.SomaService;\r\nimport org.junit.jupiter.api.Assertions;\r\nimport org.junit.jupiter.api.BeforeEach;\r\nimport org.junit.jupiter.api.Tag;\r\nimport org.junit.jupiter.api.Test;\r\n\r\npublic class MultiplyServiceTest {\r\n\r\n    public MultiplicacaoService multiplicacaoService;\r\n\r\n    @BeforeEach\r\n    void setup(){\r\n        multiplicacaoService = new MultiplicacaoService(0, 0);\r\n    }\r\n\r\n    @Tag(\"smoke\")\r\n    @Test\r\n    void shouldMultiply(){\r\n        Integer result = multiplicacaoService.multiplicacao(3, 3);\r\n        Assertions.assertEquals(9, result);\r\n    }\r\n\r\n    @Tag(\"regression\")\r\n    @Test\r\n    void shouldNotDivide(){\r\n        Integer result = multiplicacaoService.multiplicacao(3, 3);\r\n        Assertions.assertNotEquals(1, result);\r\n    }\r\n\r\n    @Tag(\"regression\")\r\n    @Test\r\n    void shouldNotSum(){\r\n        Integer result = multiplicacaoService.multiplicacao(3, 3);\r\n        Assertions.assertNotEquals(6, result);\r\n\r\n    }\r\n\r\n    @Tag(\"regression\")\r\n    @Test\r\n    void shouldNotSubtract(){\r\n        Integer result = multiplicacaoService.multiplicacao(3, 3);\r\n        Assertions.assertNotEquals(0, result);\r\n\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/test/example/service/MultiplyServiceTest.java b/src/test/java/test/example/service/MultiplyServiceTest.java
+--- a/src/test/java/test/example/service/MultiplyServiceTest.java	(revision 72c1df61b491476595f5c5a2330744f04ef0d5c6)
++++ b/src/test/java/test/example/service/MultiplyServiceTest.java	(date 1727537579709)
+@@ -1,50 +1,55 @@
+ package test.example.service;
+ 
+-import org.example.service.divisao.DivisaoService;
++import org.example.model.operations.OperationModel;
++import org.example.repository.multiplicacao.MultiplicacaoRepository;
+ import org.example.service.multiplicacao.MultiplicacaoService;
+-import org.example.service.soma.SomaService;
+ import org.junit.jupiter.api.Assertions;
+ import org.junit.jupiter.api.BeforeEach;
+ import org.junit.jupiter.api.Tag;
+ import org.junit.jupiter.api.Test;
++import org.junit.jupiter.params.ParameterizedTest;
++import org.junit.jupiter.params.provider.CsvSource;
++import org.mockito.Mockito;
++
++import java.sql.Connection;
++import java.sql.DriverManager;
++import java.sql.SQLException;
+ 
+ public class MultiplyServiceTest {
+ 
++    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/calculadora_mvc", "root", "");
+     public MultiplicacaoService multiplicacaoService;
+ 
++    public MultiplicacaoRepository multiplicacaoRepository = new MultiplicacaoRepository(connection);
++
++    public MultiplyServiceTest() throws SQLException {
++    }
++
+     @BeforeEach
+     void setup(){
+-        multiplicacaoService = new MultiplicacaoService(0, 0);
++        multiplicacaoRepository = Mockito.mock(multiplicacaoRepository.getClass());
++        multiplicacaoService =  new MultiplicacaoService(multiplicacaoRepository);
+     }
+ 
+     @Tag("smoke")
+     @Test
+-    void shouldMultiply(){
++    void shouldMultiply() throws SQLException {
+         Integer result = multiplicacaoService.multiplicacao(3, 3);
+         Assertions.assertEquals(9, result);
+-    }
+-
+-    @Tag("regression")
+-    @Test
+-    void shouldNotDivide(){
+-        Integer result = multiplicacaoService.multiplicacao(3, 3);
+-        Assertions.assertNotEquals(1, result);
+-    }
+-
+-    @Tag("regression")
+-    @Test
+-    void shouldNotSum(){
+-        Integer result = multiplicacaoService.multiplicacao(3, 3);
+-        Assertions.assertNotEquals(6, result);
+-
++        Mockito.verify(multiplicacaoRepository).save(Mockito.any(OperationModel.class));
+     }
+ 
+     @Tag("regression")
+-    @Test
+-    void shouldNotSubtract(){
+-        Integer result = multiplicacaoService.multiplicacao(3, 3);
+-        Assertions.assertNotEquals(0, result);
+-
++    @ParameterizedTest
++    @CsvSource ({
++     "3, 3, 0",
++     "3, 3, -1",
++     "3, 3, 1",
++     "3, 3, 6"
++    })
++    void shouldNotReturnInvalidMultiplyOperation(int numberOne, int numberTwo, int invalidMultiplyResult) {
++        Integer result = multiplicacaoService.multiplicacao(numberOne, numberTwo);
++        Assertions.assertNotEquals(invalidMultiplyResult, result);
+     }
+ 
+ }
+\ No newline at end of file
+Index: src/test/java/test/example/service/SubtractServiceTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package test.example.service;\r\n\r\nimport org.example.service.divisao.DivisaoService;\r\nimport org.example.service.soma.SomaService;\r\nimport org.example.service.subtracao.SubtracaoService;\r\nimport org.junit.jupiter.api.Assertions;\r\nimport org.junit.jupiter.api.BeforeEach;\r\nimport org.junit.jupiter.api.Tag;\r\nimport org.junit.jupiter.api.Test;\r\n\r\npublic class SubtractServiceTest {\r\n\r\n    public SubtracaoService subtracaoService;\r\n\r\n    @BeforeEach\r\n    void setup(){\r\n        subtracaoService = new SubtracaoService(0, 0);\r\n    }\r\n    @Tag(\"smoke\")\r\n    @Test\r\n    void shouldSubtract(){\r\n        Integer result = subtracaoService.subtracao(3, 3);\r\n        Assertions.assertEquals(0, result);\r\n    }\r\n\r\n    @Tag(\"regression\")\r\n    @Test\r\n    void shouldNotDivide(){\r\n        Integer result = subtracaoService.subtracao(3, 3);\r\n        Assertions.assertNotEquals(1, result);\r\n    }\r\n\r\n    @Tag(\"regression\")\r\n    @Test\r\n    void shouldNotMultiply(){\r\n        Integer result = subtracaoService.subtracao(3, 3);\r\n        Assertions.assertNotEquals(9, result);\r\n\r\n    }\r\n\r\n    @Tag(\"regression\")\r\n    @Test\r\n    void shouldNotSum(){\r\n        Integer result = subtracaoService.subtracao(3, 3);\r\n        Assertions.assertNotEquals(6, result);\r\n\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/test/example/service/SubtractServiceTest.java b/src/test/java/test/example/service/SubtractServiceTest.java
+--- a/src/test/java/test/example/service/SubtractServiceTest.java	(revision 72c1df61b491476595f5c5a2330744f04ef0d5c6)
++++ b/src/test/java/test/example/service/SubtractServiceTest.java	(date 1727537571743)
+@@ -1,49 +1,56 @@
+ package test.example.service;
+ 
+-import org.example.service.divisao.DivisaoService;
+-import org.example.service.soma.SomaService;
++import org.example.model.operations.OperationModel;
++import org.example.repository.subtracao.SubtracaoRepository;
+ import org.example.service.subtracao.SubtracaoService;
+ import org.junit.jupiter.api.Assertions;
+ import org.junit.jupiter.api.BeforeEach;
+ import org.junit.jupiter.api.Tag;
+ import org.junit.jupiter.api.Test;
++import org.junit.jupiter.params.ParameterizedTest;
++import org.junit.jupiter.params.provider.CsvSource;
++import org.mockito.Mockito;
++
++import java.sql.Connection;
++import java.sql.DriverManager;
++import java.sql.SQLException;
+ 
+ public class SubtractServiceTest {
+ 
++    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/calculadora_mvc", "root", "");
+     public SubtracaoService subtracaoService;
+ 
++    public SubtracaoRepository subtracaoRepository = new SubtracaoRepository(connection);
++
++    public SubtractServiceTest() throws SQLException {
++    }
++
+     @BeforeEach
+     void setup(){
+-        subtracaoService = new SubtracaoService(0, 0);
++        subtracaoRepository = Mockito.mock(subtracaoRepository.getClass());
++        subtracaoService =  new SubtracaoService(subtracaoRepository);
+     }
+     @Tag("smoke")
+     @Test
+-    void shouldSubtract(){
++    void shouldSubtract() throws SQLException{
+         Integer result = subtracaoService.subtracao(3, 3);
+         Assertions.assertEquals(0, result);
+-    }
+-
+-    @Tag("regression")
+-    @Test
+-    void shouldNotDivide(){
+-        Integer result = subtracaoService.subtracao(3, 3);
+-        Assertions.assertNotEquals(1, result);
+-    }
+-
+-    @Tag("regression")
+-    @Test
+-    void shouldNotMultiply(){
+-        Integer result = subtracaoService.subtracao(3, 3);
+-        Assertions.assertNotEquals(9, result);
+-
++        Mockito.verify(subtracaoRepository).save(Mockito.any(OperationModel.class));
+     }
+ 
+     @Tag("regression")
+-    @Test
+-    void shouldNotSum(){
+-        Integer result = subtracaoService.subtracao(3, 3);
+-        Assertions.assertNotEquals(6, result);
++    @ParameterizedTest
++    @CsvSource({
++            "3, 3, -1",
++            "3, 3, 1",
++            "3, 3, 6",
++            "3, 3, 9"
++    })
++    void shouldNotReturnInvalidSubtractOperation(int numberOne, int numberTwo, int invalidSubtractResult){
++        Integer result = subtracaoService.subtracao(numberOne, numberTwo);
++        Assertions.assertNotEquals(invalidSubtractResult, result);
++    }
+ 
+-    }
++
+ 
+ }
+\ No newline at end of file
